@@ -1,0 +1,18 @@
+{
+  "name": "js-news-bot",
+  "version": "0.1.1",
+  "description": "Get and share news to the audience",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oleksandr Tryshchenko <ensaierwa@gmail.com> (tryshchenko.com)",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "11.4.0",
+    "mongodb": "2.2.33",
+    "node-telegram-bot-api": "0.29.0",
+    "request": "2.83.0"
+  }
+}
