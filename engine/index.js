@@ -25,6 +25,8 @@ class Engine {
 	 */
 	initializeDadatabase(err, db) {
 		// @TODO validate errors here, it's important
+		this.processParsers();
+		setInterval(this.processParsers.bind(this), this.config.parseInterval);
 		this.db = db;
 	}
 
@@ -62,10 +64,6 @@ class Engine {
 	 * Manual initialization
 	 */
 	init() {
-		// console.log(this.configParseInterval);
-		// return;
-		this.processParsers();
-		setInterval(this.processParsers.bind(this), this.config.parseInterval);
 		this.bot.on('message', (msg) => {
 			// proxy messages
 			const message = msg.text.toString();
