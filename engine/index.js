@@ -2,9 +2,6 @@ const Bot = require('node-telegram-bot-api');
 const request = require('request');
 const MongoClient = require('mongodb').MongoClient
 
-const db = {};
-const timeouts = {};
-
 class Engine {
 	/**
 	 * @param  {Object} config
@@ -13,6 +10,7 @@ class Engine {
 	constructor(config, parsers) {
 		this.config = config;
 		this.parsers = parsers;
+		this.timeouts = {};
 		this.bot = new Bot(config.token, {polling: true});
 		this.sendMessage = this.messenger(this.bot, config.channelId);
 		MongoClient.connect(config.dbPath, this.initializeDadatabase.bind(this));
