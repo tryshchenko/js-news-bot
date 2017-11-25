@@ -11,6 +11,8 @@ The most critical todos:
 ## TL;DR
 This bot parses websites with javascript news and delivers them to telegram channel.
 https://t.me/js_amb - join JS Ambassador channel on the telegram to subscribe to that news.
+Join our development chat in telegram!
+https://t.me/joinchat/F3IFJxGnADPIh5MK2wvDlg
 
 ## Reasons
 RSS isn't a case anymore. We want to get rapid notifications from websites. Even from those - who has not provided us a possibility to do so.
