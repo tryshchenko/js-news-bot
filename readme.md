@@ -46,6 +46,11 @@ Such an approach will help us a lot to scale it.
 
 ## Contribution
 Everyone is welcome, feel free to open a PR.
+To simplify development you will need to do 2 steps:
+- Create your own channel for testing
+- Register your own bot with @botfather for testing
+
+It's definitely makes sense to consider some option to test locally without telegram integration, but now I have no such experience. If you have - feel free to suggest.
 
 ## Credentials
 Icon used for application was taken here https://www.flaticon.com/authors/smashicons
