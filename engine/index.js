@@ -32,6 +32,7 @@ class Engine {
 	 * Process parsers in batch mode. No need to init them manually
 	 */
 	processParsers() {
+		console.log(`Parsing happened on ${(new Date().toString())}`);
 		this.parsers.forEach(Parser => 
 			new Parser(this.sendMessage, this.db).parse());
 	}
@@ -63,6 +64,7 @@ class Engine {
 	init() {
 		// console.log(this.configParseInterval);
 		// return;
+		this.processParsers();
 		setInterval(this.processParsers.bind(this), this.config.parseInterval);
 		this.bot.on('message', (msg) => {
 			// proxy messages
