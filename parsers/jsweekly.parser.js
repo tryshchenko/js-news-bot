@@ -12,10 +12,7 @@ class JsweeklyParser extends BaseParser {
 		request(jsweeklyFeed, (err, resp, body) => {
 			this.document = this.getDOM(body);
 			const issues = [].slice.call(this.document.querySelectorAll('.issue'));
-			const issuesFiltered = issues.map((issue, index) => {
-				if (index > 2) {
-					return;
-				}
+			issues.forEach((issue, index) => {
 				const descHtml = [].slice.call(issue.querySelectorAll('.desc li'));
 				const desc = descHtml.map(el => el.innerHTML).join('\n');
 				const linkHtml = issue.querySelector('a');
