@@ -75,7 +75,7 @@ class Engine {
 				return;
 			}
 
-			this.timeouts[user] = setTimeout(this.unblockUser, 1000 * 60, user);
+			this.timeouts[user] = setTimeout(this.unblockUser.bind(this), 1000 * 60, user);
 			if (message !== 'start') {
 				this.sendMessage(message);
 			}
