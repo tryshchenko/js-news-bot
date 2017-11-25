@@ -25,9 +25,9 @@ class Engine {
 	 */
 	initializeDadatabase(err, db) {
 		// @TODO validate errors here, it's important
+		this.db = db;
 		this.processParsers();
 		setInterval(this.processParsers.bind(this), this.config.parseInterval);
-		this.db = db;
 	}
 
 	/**
