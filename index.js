@@ -7,6 +7,7 @@ const ChromeReleasesParser = require('./parsers/chrome-releases.parser');
 const FrontendFocusParser = require('./parsers/frontend-focus.parser');
 const NodeWeeklyParser = require('./parsers/nodeweekly.parser');
 const FrontendFrontParser = require('./parsers/frontend-front.parser');
+const EchoJSParser = require('./parsers/echojs.parser');
 
 const parsers = [
 	JsweeklyParser,
@@ -14,7 +15,8 @@ const parsers = [
 	ChromeReleasesParser,
 	FrontendFocusParser,
 	NodeWeeklyParser,
-  FrontendFrontParser
+  FrontendFrontParser,
+  EchoJSParser
 ];
 
 const engine = new Engine(config, parsers).init();
