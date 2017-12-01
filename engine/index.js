@@ -75,12 +75,12 @@ class Engine {
 				return;
 			}
 
-			this.timeouts[user] = setTimeout(this.unblockUser.bind(this), 1000 * 60, user);
-			if (message !== 'start') {
+			this.timeouts[user] = setTimeout(this.unblockUser.bind(this), 1000 * 60 * 60, user);
+			if (message !== '/start') {
 				this.sendMessage(message);
 			}
 		});
-	}
+	};
 }
 
 module.exports = Engine;
