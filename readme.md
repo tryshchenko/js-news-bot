@@ -1,5 +1,5 @@
 ![Logo](https://github.com/tryshchenko/js-news-bot/raw/master/icon.png)
-# JS Ambassador Bot - JS News to Telegram Channel
+# NaNdefined bot - JS News to Telegram Channel
 WIP.
 The most critical todos:
 - Error handling
