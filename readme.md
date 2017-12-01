@@ -1,4 +1,4 @@
-![Logo](https://github.com/tryshchenko/js-news-bot/raw/master/icon.png)
+![Logo](https://github.com/tryshchenko/js-news-bot/raw/master/splash.png)
 # NaNdefined bot - JS News to Telegram Channel
 WIP.
 The most critical todos:
@@ -10,7 +10,7 @@ The most critical todos:
 
 ## TL;DR
 This bot parses websites with javascript news and delivers them to telegram channel.
-https://t.me/js_amb - join JS Ambassador channel on the telegram to subscribe to that news.
+https://t.me/js_amb - join **NaNdefined** channel on the telegram to subscribe to that news.
 Join our development chat in telegram!
 https://t.me/joinchat/F3IFJxGnADPIh5MK2wvDlg
 
