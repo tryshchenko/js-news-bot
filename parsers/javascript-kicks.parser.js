@@ -15,7 +15,7 @@ class JavascriptKicksParser extends BaseParser {
         const titleLink = issue.querySelector('a');
         const title = titleLink.getAttribute('title');
         const link = titleLink.getAttribute('href');
-        const message = [title, link].join('\n\n');
+        const message = [title, !this._isAbsoluteLink(link) ? link : `${jsKicksFeed}${link}`].join('\n\n');
 
         this.collection.find({uid: link}).toArray((err, res) => {
           if (res.length === 0) {
