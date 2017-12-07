@@ -7,6 +7,10 @@ class ChromeReleasesParser extends BaseParser {
 		return 'chrome_releases_parser';
 	}
 
+	getSiteUrl() {
+		return 'https://chromereleases.googleblog.com/';
+	}
+
 	parse() {
 		request(releasesFeed, (err, resp, body) => {
 			this.document = this.getDOM(body);
@@ -18,7 +22,7 @@ class ChromeReleasesParser extends BaseParser {
 				const linkEl = issue.querySelector('.title a');
 				const link = linkEl.getAttribute('href');
 				const title = `New updates from chrome releases: ${linkEl.innerHTML}`;
-				const message = [title, link].join('\n\n');
+				const message = [title, !this._isAbsoluteLink(link) ? link : `${releasesFeed}${link}`].join('\n\n');
 
 				this.collection.find({uid: link}).toArray((err, res) => {
 					if (res.length === 0) {

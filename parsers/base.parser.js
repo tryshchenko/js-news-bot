@@ -12,6 +12,15 @@ class BaseParser {
 	}
 
 	/**
+	 * Checks if parsed link is absolute
+	 * @param  {String} link parsed link
+	 * @return  {Boolean} is link absolute
+	 */
+	_isAbsoluteLink(link) {
+		return /^(http|https)/.test(link);
+	}
+
+	/**
 	 * @param  {Function} curry around bot api
 	 * @param  {Object} db
 	 */
