@@ -18,17 +18,14 @@ class Engine {
 		MongoClient.connect(config.dbPath, this.initializeDadatabase.bind(this));
 	}
 
-	replaceLinks(text) {
-	    var urlRegex = /(https?:\/\/[^\s]+)/g;
-	    return text.replace(urlRegex, function(url) {
+	replaceLinks(content) {
+	    var regex = /(https?:\/\/[^\s]+)/g;
+	    return content.replace(regex, function(url) {
 	    	return `<a href="${url}">Open</a>`;
 	    });
-	    // or alternatively
-	    // return text.replace(urlRegex, '<a href="$1">$1</a>')
 	}
 
 	sendMessage() {
-		console.log(this.content);
 		const content = this.replaceLinks(this.content);
 		this.messenger(this.bot, this.config.channelId)(content);
 		this.content = '';
