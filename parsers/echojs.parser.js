@@ -13,9 +13,9 @@ class EchoJSParser extends BaseParser {
       const issues = [].slice.call(this.document.querySelectorAll('#newslist article'));
       issues.forEach((issue, index) => {
         const titleLink = issue.querySelector('h2 a');
-        const title = titleLink.innerHTML;
+        const title = `\u{26A1} New echojs: ${titleLink.innerHTML}`;
         const link = titleLink.getAttribute('href');
-        const message = [title, link].join('\n\n');
+        const message = [title, link].join(' ');
 
         this.collection.find({uid: link}).toArray((err, res) => {
           if (res.length === 0) {

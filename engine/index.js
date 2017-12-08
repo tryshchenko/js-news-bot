@@ -1,5 +1,6 @@
 const Bot = require('node-telegram-bot-api');
 const request = require('request');
+const _ = require('lodash');
 const MongoClient = require('mongodb').MongoClient
 
 class Engine {
@@ -10,10 +11,32 @@ class Engine {
 	constructor(config, parsers) {
 		this.config = config;
 		this.parsers = parsers;
+		this.content = '';
 		this.timeouts = {};
 		this.bot = new Bot(config.token, {polling: true});
-		this.sendMessage = this.messenger(this.bot, config.channelId);
+		this.sendMessageDebounced = _.debounce(this.sendMessage.bind(this), 2000);
 		MongoClient.connect(config.dbPath, this.initializeDadatabase.bind(this));
+	}
+
+	replaceLinks(text) {
+	    var urlRegex = /(https?:\/\/[^\s]+)/g;
+	    return text.replace(urlRegex, function(url) {
+	    	return `<a href="${url}">Open</a>`;
+	    });
+	    // or alternatively
+	    // return text.replace(urlRegex, '<a href="$1">$1</a>')
+	}
+
+	sendMessage() {
+		console.log(this.content);
+		const content = this.replaceLinks(this.content);
+		this.messenger(this.bot, this.config.channelId)(content);
+		this.content = '';
+	}
+
+	gatherParsedContent(content) {
+		this.content += `${content}\n\n`;
+		this.sendMessageDebounced();
 	}
 
 	/**
@@ -34,7 +57,7 @@ class Engine {
 	processParsers() {
 		console.log(`Parsing happened on ${(new Date().toString())}`);
 		this.parsers.forEach(Parser => 
-			new Parser(this.sendMessage, this.db).parse());
+			new Parser(this.gatherParsedContent.bind(this), this.db).parse());
 	}
 
 	/**
@@ -45,7 +68,7 @@ class Engine {
 	 */
 	messenger(bot, chatId) {
 		return (msg) => {
-			this.bot.sendMessage(chatId, msg); 
+			this.bot.sendMessage(chatId, msg, { parse_mode: "HTML" }); 
 		}
 	}
 

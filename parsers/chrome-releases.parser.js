@@ -17,8 +17,8 @@ class ChromeReleasesParser extends BaseParser {
 				// 	.replace(/<(?:.|\n)*?>/gm, '');;
 				const linkEl = issue.querySelector('.title a');
 				const link = linkEl.getAttribute('href');
-				const title = `New updates from chrome releases: ${linkEl.innerHTML}`;
-				const message = [title, link].join('\n\n');
+				const title = `\u{1F6A7} New updates from chrome releases: ${linkEl.innerHTML}`;
+				const message = [title, link].join('  ');
 
 				this.collection.find({uid: link}).toArray((err, res) => {
 					if (res.length === 0) {

@@ -14,8 +14,8 @@ class FrontendFrontParser extends BaseParser {
       issues.forEach((issue, index) => {
         const titleLink = issue.querySelector('.story-title h2 a');
         const link = titleLink.getAttribute('href');
-        const title = titleLink.getAttribute('title');
-        const message = [title, link].join('\n\n');
+        const title = `\u{1F306} New FF: ${titleLink.getAttribute('title')}`;
+        const message = [title, link].join('  ');
 
         this.collection.find({uid: link}).toArray((err, res) => {
           if (res.length === 0) {

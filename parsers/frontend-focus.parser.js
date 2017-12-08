@@ -15,8 +15,8 @@ class FrontendFocusParser extends BaseParser {
       issues.forEach((issue, index) => {
         const linkHtml = issue.querySelector('a');
         const link = `${absoluteLinkBody}${linkHtml.getAttribute('href')}`;
-        const title = `New FrontEnd Focus rolled out: ${linkHtml.innerHTML}`;
-        const message = [title, link].join('\n\n');
+        const title = `\u{26F3} New FrontEnd Focus rolled out: ${linkHtml.innerHTML}`;
+        const message = [title, link].join('  ');
 
         this.collection.find({uid: link}).toArray((err, res) => {
           if (res.length === 0) {

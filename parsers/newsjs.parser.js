@@ -12,9 +12,9 @@ class NewsjsParser extends BaseParser {
 			this.document = this.getDOM(body);
 			const news = [].slice.call(this.document.querySelectorAll('.post-title a'));
 			news.forEach((a, index) => {
-				const title = a.innerHTML;
+				const title = `\u{270C} New newsjs: ${a.innerHTML}`;
 				const link = a.getAttribute('href');
-				const message = [title, link].join('\n\n');
+				const message = [title, link].join('  ');
 
 				this.collection.find({uid: link}).toArray((err, res) => {
 					if (res.length === 0) {

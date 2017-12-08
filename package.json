@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "jsdom": "11.4.0",
+    "lodash": "^4.17.4",
     "mongodb": "2.2.33",
     "node-telegram-bot-api": "0.29.0",
     "request": "2.83.0"

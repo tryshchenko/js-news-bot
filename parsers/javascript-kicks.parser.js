@@ -13,9 +13,9 @@ class JavascriptKicksParser extends BaseParser {
       const issues = [].slice.call(this.document.querySelectorAll('.media-body'));
       issues.forEach((issue, index) => {
         const titleLink = issue.querySelector('a');
-        const title = titleLink.getAttribute('title');
+        const title = `\u{1F33D} New FF: ${titleLink.getAttribute('title')}`;
         const link = titleLink.getAttribute('href');
-        const message = [title, link].join('\n\n');
+        const message = [title, link].join('  ');
 
         this.collection.find({uid: link}).toArray((err, res) => {
           if (res.length === 0) {

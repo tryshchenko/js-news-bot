@@ -16,9 +16,9 @@ const parsers = [
 	ChromeReleasesParser,
 	FrontendFocusParser,
 	NodeWeeklyParser,
-  FrontendFrontParser,
-  EchoJSParser,
-  JavascriptKicksParser
+ 	FrontendFrontParser,
+	EchoJSParser,
+	JavascriptKicksParser
 ];
 
 const engine = new Engine(config, parsers).init();

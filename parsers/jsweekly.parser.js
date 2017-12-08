@@ -17,7 +17,7 @@ class JsweeklyParser extends BaseParser {
 				const desc = descHtml.map(el => el.innerHTML).join('\n');
 				const linkHtml = issue.querySelector('a');
 				const link = `${absoluteLinkBody}${linkHtml.getAttribute('href')}`;
-				const title = `New JS Weekly rolled out: ${linkHtml.innerHTML}`;
+				const title = `\u{2615} New JS Weekly rolled out: ${linkHtml.innerHTML}`;
 				const message = [title, desc, link].join('\n\n');
 
 				this.collection.find({uid: link}).toArray((err, res) => {
